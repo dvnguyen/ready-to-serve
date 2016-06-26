@@ -1,0 +1,41 @@
+<form ng-submit="vm.addParty()" class="form-inline party-form">
+	<div class="form-group">
+		<input type="text" ng-model="vm.newParty.name" class="form-control" placeholder="Name" required autofocus>
+	</div>
+	<div class="form-group">
+		<input type="text" ng-model="vm.newParty.phone" class="form-control" placeholder="Phone" required>
+	</div>
+	<div class="form-group">
+		<input type="number" ng-model="vm.newParty.size" class="form-control" placeholder="Size of party" required>
+	</div>
+	<button type="submit" class="btn btn-primary">Add party</button>
+</form>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Done?</th>
+			<th>Info</th>
+			<th>Notified?</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr ng-repeat="party in vm.parties">
+			<td>
+				<!-- TODO(david.nguyen): Add checkbox -->
+			</td>
+			<td>
+				<div><strong>{{ party.name }} {{ party.size }} people</strong></div>
+				<div>{{ party.phone }}</div>
+			</td>
+			<td>{{ party.notified ? 'Yes' : 'No' }}</td>
+			<td>
+				<!-- TODO(david.nguyen): Button to notify party. -->
+				<!-- TODO(david.nguyen): Buttom to remove party. -->
+			</td>
+		</tr>
+	</tbody>
+</table>
+
