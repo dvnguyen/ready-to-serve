@@ -8,8 +8,9 @@
   WaitListController.$inject = ['$firebaseArray'];
 
   function WaitListController($firebaseArray) {
-  	var vm = this;
-  	var fireParties = new Firebase('https://ready-to-serve.firebaseio.com/parties');
+		var vm               = this;
+		var fireParties      = new Firebase('https://ready-to-serve.firebaseio.com/parties');
+		var fireTextMessages = new Firebase('https://ready-to-serve.firebaseio.com/textMessages');
 
   	function Party() {
 			this.name     = '';
@@ -19,10 +20,11 @@
 			this.notified = false;
   	}
 
-		vm.newParty    = new Party();
-		vm.parties     = $firebaseArray(fireParties);
-		vm.addParty    = addParty;
-		vm.removeParty = removeParty;
+		vm.newParty        = new Party();
+		vm.parties         = $firebaseArray(fireParties);
+		vm.addParty        = addParty;
+		vm.removeParty     = removeParty;
+		vm.sendTextMessage = sendTextMessage;
 
   	function addParty() {
   		vm.parties.$add(vm.newParty);
@@ -32,5 +34,19 @@
   	function removeParty(party) {
   		vm.parties.$remove(party);
   	}
+
+  	function sendTextMessage(party) {
+  		var newTextMessage = {
+				name        : party.name,
+				phoneNumber : party.phone,
+				size        : party.size
+  		};
+
+  		fireTextMessages.push(newTextMessage);
+  		party.notified = true;
+  		vm.parties.$save(party);
+  	}
+
+
   }
 })();
