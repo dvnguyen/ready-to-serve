@@ -33,7 +33,7 @@
 			<td>{{ party.notified ? 'Yes' : 'No' }}</td>
 			<td>
 				<!-- TODO(david.nguyen): Button to notify party. -->
-				<!-- TODO(david.nguyen): Buttom to remove party. -->
+				<button ng-click="vm.removeParty(party)" class="btn btn-danger">Remove</button>
 			</td>
 		</tr>
 	</tbody>
