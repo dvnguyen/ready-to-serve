@@ -2,7 +2,7 @@
 <html lang="en" ng-app="app">
 <head>
 	<meta charset="UTF-8">
-	<title>Ready to Serve</title>
+	<title>Ready To Serve</title>
 	<!-- Bootstrap latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<!-- Optional theme -->
@@ -11,8 +11,28 @@
 	<link rel="stylesheet" href="content/css/app.css">
 </head>
 <body>
+	<nav ng-controller="AuthController as vm" class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#/">Ready To Serve</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#/login">Log in</a></li>
+					<li><a href="" ng-click="vm.logout()">Log out</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
+
 	<!-- Main content -->
-	<ng-view></ng-view>
+	<div class="container" ng-view></div>
 
 	<!--Third-party JS-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
