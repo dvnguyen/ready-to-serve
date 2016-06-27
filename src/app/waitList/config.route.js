@@ -8,7 +8,7 @@
   configFunction.$inject = ['$routeProvider'];
 
   function configFunction($routeProvider) {
-  	$routeProvider.when('/waitList', {
+  	$routeProvider.when('/waitlist', {
   		templateUrl: 'app/waitList/waitList.html',
   		controller: 'WaitListController',
   		controllerAs: 'vm'
