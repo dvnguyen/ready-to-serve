@@ -12,7 +12,7 @@
 
     var service = {
     	Party: Party,
-    	parties: $firebaseArray(firebaseDataService.root.child('parties'));
+    	parties: $firebaseArray(firebaseDataService.root.child('parties'))
     };
 
     return service;
