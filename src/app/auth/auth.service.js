@@ -5,17 +5,22 @@
     .module('app.auth')
     .factory('authService', authService);
 
-  authService.$inject = [];
+  authService.$inject = ['$firebaseAuth', 'firebaseDataService'];
 
-  function authService() {
+  function authService($firebaseAuth, firebaseDataService) {
+    var firebaseAuthObject = $firebaseAuth(firebaseDataService.root);
+
     var service = {
-
+    	register: register
     };
 
     return service;
 
     ///////////////
 
+    function register(user) {
+    	return firebaseAuthObject.$createUser(user);
+    }
 
   }
 
