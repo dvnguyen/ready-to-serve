@@ -5,17 +5,17 @@
     .module('app.waitList')
     .controller('WaitListController', WaitListController);
 
-  WaitListController.$inject = ['textMessageService', 'partyService'];
+  WaitListController.$inject = ['textMessageService', 'partyService', 'user'];
 
-  function WaitListController(textMessageService, partyService) {
+  function WaitListController(textMessageService, partyService, user) {
 		var vm = this;
 
 		vm.newParty        = new partyService.Party();
-		vm.parties         = partyService.parties;
+		vm.parties         = partyService.getPartiesByUser(user.uid);
 		vm.addParty        = addParty;
 		vm.removeParty     = removeParty;
 		vm.sendTextMessage = sendTextMessage;
-		vm.toggleDone			 = toggleDone;
+		vm.toggleDone      = toggleDone;
 
   	function addParty() {
   		vm.parties.$add(vm.newParty);
